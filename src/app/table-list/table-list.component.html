@@ -1,0 +1,108 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Posiciones</h4>
+                      <p class="card-category"> Últimas posiciones informadas</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive" style="overflow-x: visible;overflow-y: auto; max-height:300px">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                <tr>
+                                    <th scope="col">
+                                        <span>Vendedor</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span >Posición</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Hora</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Velocidad</span>
+                                    </th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let register of lastPositions">
+                                    <td>{{register.name}}</td>
+                                    <td>{{register.position}}</td>
+                                    <td>{{register.date | date:'dd/MM/yyyy hh:mm:ss'}}</td>
+                                    <td>{{register.speed}} [Km/h]</td>
+                                    
+                                    <td>
+                                        <button type="submit" (click)="gotoMap(register.latitude, register.longitude)" class="btn btn-danger btn-sm">
+                                            <span class="d-none d-md-inline"><i class="material-icons">map</i> Mapa</span>
+                                        </button>
+                                        <button type="submit" (click)="detail(register.code, register.name)" class="btn btn-danger btn-sm">
+                                            
+                                            <span class="d-none d-md-inline"><i class="material-icons">list</i> Detalle</span>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div *ngIf='showing' class="col-md-12">
+              <div class="card card-plain">
+                  <div class="card-header card-header-danger row">
+                    <div class="col-5">
+                        <h4 class="card-title mt-0"> Detalle de Posiciones</h4>
+                    </div>
+                    <div class="col-4">
+                      <p class="card-category"> {{saleDetail}}</p>
+                    </div>
+                    <div class="col-3">
+                        <button *ngIf='!showing' type="submit" (click)="setShowing(true)" class="btn btn-danger btn-sm">
+                            <span class="d-none d-md-inline"><i class="material-icons">visibiliy</i> Ver</span>
+                        </button>
+
+                        <button *ngIf='showing' type="submit" (click)="setShowing(false)" class="btn btn-danger btn-sm">
+                            <span  class="d-none d-md-inline"><i class="material-icons">visibility_off</i> Ocultar</span>
+                        </button>
+                    </div>
+
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive" style="overflow-x: visible;overflow-y: auto; max-height:200px">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                <tr>
+                                    <th scope="col">
+                                        <span >Posición</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Hora</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Velocidad</span>
+                                    </th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let register of detailPositions">
+                                    <td>{{register.position}}</td>
+                                    <td>{{register.date | date:'short'}}</td>
+                                    <td>{{register.speed}} [Km/h]</td>
+                                </tr>
+
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

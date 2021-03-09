@@ -1,0 +1,73 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger row">
+                    <div class="col-6">
+                      <h4 class="card-title">Resultados</h4>
+                      <p class="card-category">Ventas Procesadas</p>
+                    </div>
+                    
+                    <div class="col-4">
+
+                    
+                        <mat-form-field appearance="fill">
+                            <mat-label>Escoger Fecha</mat-label>
+                            <input matInput [matDatepicker]="picker"  [(ngModel)]="today">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker [startAt]="today" #picker></mat-datepicker>
+                            
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-2 align-self-end">
+                        <button type="button" class="btn confirm-button" (click)="onProcess()" >Buscar</button>
+                    </div>
+                  </div>
+
+                <div class="info-process card-body dashboard-pane">
+                    <ul class="nav nav-tabs nav-tabs-info" role="tablist">
+                        <li class="nav-item nav-item-info"  *ngFor="let item of messages | keyvalue"  ><a class="nav-link" href="#dashboard-{{item.key}}" role="tab" data-toggle="tab">{{item.key}}</a></li>
+                    </ul>
+                    <div class="tab-content tab-space">
+                        <div *ngFor="let item of messages | keyvalue " class="tab-pane" id="dashboard-{{item.key}}">
+                            <div class="card">
+                                <div class="card-body card-body-info">
+                                    <div class="table-responsive" style="overflow-x: visible;overflow-y: auto; max-height:300px">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Tipo</th>
+                                                    <th scope="col">Fecha</th>
+                                                    <th scope="col">Título</th>
+                                                    <th scope="col">Descripción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let message of item?.value">
+                                                    <td scope="col"><i class={{icons.get(message.tipo)}} style="font-size:24px"></i></td>
+                                                    <td scope="col">{{message.fecha | date: 'dd/MM/yyyy'}}</td>
+                                                    <td scope="col">{{message.titulo}}</td>
+                                                    <td scope="col">{{message.mensaje}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+              </div>
+          </div>
+        
+            
+      </div>
+  </div>
+</div>

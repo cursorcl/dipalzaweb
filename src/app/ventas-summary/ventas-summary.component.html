@@ -1,0 +1,163 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger row">
+                    <div class="col-8">
+                      <h4 class="card-title">Ventas</h4>
+                      <p class="card-category"> Ventas a procesar</p>
+                    </div>
+                    <div class="col-2 align-self-end">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle confirm-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Seleccionar Vendedor
+                            </button>
+                            <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" (click)="onSelect('TODOS')" >TODOS</a>
+                                <a *ngFor="let item of sellers" class="dropdown-item" (click)="onSelect(item)">{{item.codigo}}-{{ item.nombre}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2 align-self-end">
+                        <button type="button" class="btn confirm-button" (click)="onProcess()"  [disabled]="!enabled">Confirmar</button>
+                    </div>
+                  </div>
+                    <div class="table-responsive fixed-height-table">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                <tr>
+                                     <th scope="col">
+                                        <span >Cliente</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Fecha</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Neto</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>ILA</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>IVA</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Total</span>
+                                    </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let register of dataSource">
+                                    <td>{{register.nombre}}</td>
+                                    <td>{{register.fecha | date:'dd/MM/yyyy'}}</td>
+                                    <td>{{register.neto | currency : '$ '}}</td>
+                                    <td>{{(register.totalila ? register.totalila : 0) | currency : '$ ' }}</td>
+                                    <td>{{register.iva | currency : '$ ' }}</td>
+                                    <td>{{(register.neto + register.totalila + register.iva) | currency : '$ '}}</td>
+                                </tr>
+
+                              </tbody>
+                          </table>
+                      </div>
+                  
+              </div>
+          </div>
+
+          <div *ngIf='showing' class="col-md-12">
+              <div class="card card-plain">
+                  <div class="card-header card-header-danger row">
+                    <div class="col-5">
+                        <h4 class="card-title mt-0"> Detalle de Venta</h4>
+                    </div>
+                    <div class="col-4">
+                      <p class="card-category"> {{detailName}}</p>
+                    </div>
+                    <div class="col-3">
+                        <button *ngIf='!showing' type="submit" (click)="setShowing(true)" class="btn btn-danger btn-sm">
+                            <span class="d-none d-md-inline"><i class="material-icons">visibiliy</i> Ver</span>
+                        </button>
+
+                        <button *ngIf='showing' type="submit" (click)="setShowing(false)" class="btn btn-danger btn-sm">
+                            <span  class="d-none d-md-inline"><i class="material-icons">visibility_off</i> Ocultar</span>
+                        </button>
+                    </div>
+
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive" style="overflow-x: visible;overflow-y: auto; max-height:200px">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                <tr>
+                                    <th scope="col">
+                                        <span>Artículo</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Cantidad</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Neto</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Ila</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Iva</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Total</span>
+                                    </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let register of detailSales">
+                                    <td>{{register.articulo}}</td>
+                                    <td>{{register.cantidad}}</td>
+                                    <td>{{register.neto | currency : '$ '}}</td>
+                                    <td>{{register.ila | currency : '$ '}}</td>
+                                    <td>{{register.iva | currency : '$ '}}</td>
+                                    <td>{{(register.neto + register.ila + register.iva) | currency : '$ '}}</td>
+                                </tr>
+
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+        
+            <div *ngIf="messages?.size > 0"  class="info-process card-body dashboard-pane">
+                <ul class="nav nav-tabs nav-tabs-info" role="tablist">
+                    <li class="nav-item nav-item-info"  *ngFor="let item of messages | keyvalue"  ><a class="nav-link" href="#dashboard-{{item.key}}" role="tab" data-toggle="tab">{{item.key}}</a></li>
+                </ul>
+                <div class="tab-content tab-space">
+                    <div *ngFor="let item of messages | keyvalue " class="tab-pane active " id="dashboard-{{item.key}}">
+                        <div class="card">
+                            <div class="card-body card-body-info">
+                                <table class="table table-secondary table-striped table-bordered mapping_table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Tipo</th>
+                                            <th scope="col">Título</th>
+                                            <th scope="col">Descripción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="height: 180px; overflow-y: auto;">
+                                        <tr *ngFor="let message of item?.value">
+                                            <td scope="col"><i class="{{icons[message.type]}}" style="font-size:24px"></i></td>
+                                            <td scope="col">{{message.title}}</td>
+                                            <td scope="col">{{message.description}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+      </div>
+  </div>
+</div>

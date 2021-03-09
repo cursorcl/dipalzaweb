@@ -1,0 +1,126 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Ventas</h4>
+                      <p class="card-category"> Ventas por confirmar</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive" style="overflow-x: visible;overflow-y: auto; max-height:300px">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                <tr>
+                                    <th scope="col">
+                                        <span>Vendedor</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span >Cliente</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Fecha</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Neto</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>ILA</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>IVA</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Total</span>
+                                    </th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let register of dataSource">
+                                    <td>{{register.codigo_vendedor}}</td>
+                                    <td>{{register.nombre}}</td>
+                                    <td>{{register.fecha | date:'dd/MM/yyyy'}}</td>
+                                    <td>{{register.neto | currency : '$ '}}</td>
+                                    <td>{{(register.totalila ? register.totalila : 0) | currency : '$ ' }}</td>
+                                    <td>{{register.iva | currency : '$ ' }}</td>
+                                    <td>{{(register.neto + register.totalila + register.iva) | currency : '$ '}}</td>
+                                    
+                                    <td>
+                                        <button type="submit" (click)="detail(register.codigo_vendedor, register.rut, register.codigo, register.fecha, register.nombre)" class="btn btn-danger btn-sm">
+                                            <span class="d-none d-md-inline"><i class="material-icons">list</i> Detalle</span>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div *ngIf='showing' class="col-md-12">
+              <div class="card card-plain">
+                  <div class="card-header card-header-danger row">
+                    <div class="col-5">
+                        <h4 class="card-title mt-0"> Detalle de Venta</h4>
+                    </div>
+                    <div class="col-4">
+                      <p class="card-category"> {{detailName}}</p>
+                    </div>
+                    <div class="col-3">
+                        <button *ngIf='!showing' type="submit" (click)="setShowing(true)" class="btn btn-danger btn-sm">
+                            <span class="d-none d-md-inline"><i class="material-icons">visibiliy</i> Ver</span>
+                        </button>
+
+                        <button *ngIf='showing' type="submit" (click)="setShowing(false)" class="btn btn-danger btn-sm">
+                            <span  class="d-none d-md-inline"><i class="material-icons">visibility_off</i> Ocultar</span>
+                        </button>
+                    </div>
+
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive" style="overflow-x: visible;overflow-y: auto; max-height:200px">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                <tr>
+                                    <th scope="col">
+                                        <span>Artículo</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Cantidad</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Neto</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Ila</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Iva</span>
+                                    </th>
+                                    <th scope="col">
+                                        <span>Total</span>
+                                    </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let register of detailSales">
+                                    <td>{{register.articulo}}</td>
+                                    <td>{{register.cantidad}}</td>
+                                    <td>{{register.neto | currency : '$ '}}</td>
+                                    <td>{{register.ila | currency : '$ '}}</td>
+                                    <td>{{register.iva | currency : '$ '}}</td>
+                                    <td>{{(register.neto + register.ila + register.iva) | currency : '$ '}}</td>
+                                </tr>
+
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
