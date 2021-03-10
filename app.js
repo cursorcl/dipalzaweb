@@ -14,8 +14,8 @@ const {
   function initWindow() {
     console.log("LOCAL:" + app.getLocale());
     appWindow = new BrowserWindow({
-      // fullscreen: true,
-      // frame : false,
+      fullscreen: true,
+      frame : false,
       thickFrame : true,
       title : "DIPALZA LTDA.",
       titleBarStyle: 'hidden',
@@ -53,7 +53,7 @@ const {
     Menu.setApplicationMenu(menu);
   
     // Initialize the DevTools.
-    appWindow.webContents.openDevTools()
+    // appWindow.webContents.openDevTools()
   
     appWindow.on('closed', function () {
       appWindow = null

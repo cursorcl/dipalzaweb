@@ -11,7 +11,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && ng serve -o",
-    "start:electron": "ng build --base-href ./ && electron ."
+    "electron": "electron .",
+    "start:electron": "ng build --base-href ./ && electron .",
+    "electron-build": "ng build --prod --base-href ./ && electron .",
+    "electron-package-win": "ng build --prod && electron-packager . dipalza --no-prune --ignore=/node_modules --ignore=/e2e --ignore=/src --overwrite"
   },
   "engines": {
     "node": "6.11.1",
