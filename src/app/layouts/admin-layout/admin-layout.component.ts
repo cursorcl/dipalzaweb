@@ -53,13 +53,14 @@ export class AdminLayoutComponent implements OnInit {
     })
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationStart) {
-        if (event.url != this.lastPoppedUrl)
+        if (event.url != this.lastPoppedUrl) {
           this.yScrollStack.push(window.scrollY)
+        }
       } else if (event instanceof NavigationEnd) {
         if (event.url == this.lastPoppedUrl) {
           this.lastPoppedUrl = undefined
           window.scrollTo(0, this.yScrollStack.pop())
-        } else window.scrollTo(0, 0)
+        } else { window.scrollTo(0, 0) }
       }
     })
     this._router = this.router.events
@@ -74,9 +75,9 @@ export class AdminLayoutComponent implements OnInit {
     }
 
     const window_width = $(window).width()
-    let $sidebar = $('.sidebar')
-    let $sidebar_responsive = $('body > .navbar-collapse')
-    let $sidebar_img_container = $sidebar.find('.sidebar-background')
+    const $sidebar = $('.sidebar')
+    const $sidebar_responsive = $('body > .navbar-collapse')
+    const $sidebar_img_container = $sidebar.find('.sidebar-background')
 
     if (window_width > 767) {
       if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
@@ -96,14 +97,14 @@ export class AdminLayoutComponent implements OnInit {
     })
 
     $('.fixed-plugin .badge').click(function() {
-      let $full_page_background = $('.full-page-background')
+      const $full_page_background = $('.full-page-background')
 
       $(this)
         .siblings()
         .removeClass('active')
       $(this).addClass('active')
 
-      var new_color = $(this).data('color')
+      let new_color = $(this).data('color')
 
       if ($sidebar.length !== 0) {
         $sidebar.attr('data-color', new_color)
@@ -115,7 +116,7 @@ export class AdminLayoutComponent implements OnInit {
     })
 
     $('.fixed-plugin .img-holder').click(function() {
-      let $full_page_background = $('.full-page-background')
+      const $full_page_background = $('.full-page-background')
 
       $(this)
         .parent('li')
@@ -125,7 +126,7 @@ export class AdminLayoutComponent implements OnInit {
         .parent('li')
         .addClass('active')
 
-      var new_image = $(this)
+      let new_image = $(this)
         .find('img')
         .attr('src')
 
@@ -158,7 +159,7 @@ export class AdminLayoutComponent implements OnInit {
     this.runOnRouteChange()
   }
   isMaps(path) {
-    var titlee = this.location.prepareExternalUrl(this.location.path())
+    let titlee = this.location.prepareExternalUrl(this.location.path())
     titlee = titlee.slice(1)
     if (path == titlee) {
       return false

@@ -9,7 +9,6 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
   ],
   exports: [
-    
-  ]
+      ]
 })
 export class MapModule { }

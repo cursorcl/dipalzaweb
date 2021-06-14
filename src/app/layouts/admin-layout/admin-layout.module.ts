@@ -23,6 +23,7 @@ import { SearchFormComponent } from 'app/utils/search/search-form';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { VentasResultComponent } from 'app/ventas-result/ventas-result.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ReportesComponent } from 'app/reportes/reportes.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     VentasListComponent,
     VentasSummaryComponent,
     VentasResultComponent,
+    ReportesComponent,
     TypographyComponent,
     IconsComponent,
     MapsComponent,

@@ -11,6 +11,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { VentasListComponent } from 'app/ventas-list/ventas-list.component';
 import { VentasSummaryComponent } from 'app/ventas-summary/ventas-summary.component';
 import { VentasResultComponent } from 'app/ventas-result/ventas-result.component';
+import { ReportesComponent } from 'app/reportes/reportes.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -24,5 +25,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'mapa/:latitude/:longitude', component: MapsComponent },
     { path: 'ventas-list', component: VentasListComponent },
     { path: 'ventas-summary', component: VentasSummaryComponent},
-    { path: 'ventas-result', component: VentasResultComponent}
+    { path: 'ventas-result', component: VentasResultComponent},
+    { path: 'reportes', component: ReportesComponent}
 ];
