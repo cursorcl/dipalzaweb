@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { PositionRegister } from 'app/services/positions/position.model';
@@ -11,7 +11,7 @@ import * as L from 'leaflet'
   templateUrl: './maps.component.html',
   styleUrls: ['./maps.component.css']
 })
-export class MapsComponent implements OnInit {
+export class MapsComponent implements OnInit, OnDestroy {
   map;
   private sub: any;
   lastPositions: PositionRegister[] = [];

@@ -2,7 +2,12 @@
     "appTitle": "APP_INITIALIZER Dipalza App",
          
     "apiServer" : {
-         "host" :"http://localhost:7000"
+         "host" :"http://localhost:8888"
      }
 
  }
+
+
+
+
+ 
