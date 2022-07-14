@@ -112,3 +112,19 @@ mat-datepicker-toggle {
     width:100%;
     table-layout:fixed;
     }
+
+
+    .card-title-resultados-ventas {
+
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+  
+    }
+  
+    .card-title-resultados-ventas-botones{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }    

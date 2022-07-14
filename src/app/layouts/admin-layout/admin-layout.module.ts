@@ -24,6 +24,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { VentasResultComponent } from 'app/ventas-result/ventas-result.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ReportesComponent } from 'app/reportes/reportes.component';
+import { VentasPendientesComponent } from 'app/ventas-pendientes/ventas-pendientes.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { ReportesComponent } from 'app/reportes/reportes.component';
     VentasListComponent,
     VentasSummaryComponent,
     VentasResultComponent,
+    VentasPendientesComponent,
     ReportesComponent,
     TypographyComponent,
     IconsComponent,

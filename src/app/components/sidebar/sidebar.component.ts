@@ -13,6 +13,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/ventas-list', title: 'Ventas',  icon: 'request_quote', class: '' },
     { path: '/ventas-summary', title: 'Procesar Ventas',  icon: 'request_quote', class: '' },
     { path: '/ventas-result', title: 'Resultado Ventas',  icon: 'request_quote', class: '' },
+    { path: '/ventas-pendientes', title: 'Ventas No Realizadas',  icon: 'request_quote', class: '' },
      /*
     { path:  '/reportes', title: 'Reportes de Ventas', icon: 'request_quote', class: ''},
 

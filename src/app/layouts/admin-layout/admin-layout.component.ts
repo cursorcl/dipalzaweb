@@ -1,12 +1,10 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core'
 import {
   Location,
-  LocationStrategy,
-  PathLocationStrategy,
   PopStateEvent,
 } from '@angular/common'
 import 'rxjs/add/operator/filter'
-import { NavbarComponent } from '../../components/navbar/navbar.component'
+
 import { Router, NavigationEnd, NavigationStart } from '@angular/router'
 import { Subscription } from 'rxjs/Subscription'
 import PerfectScrollbar from 'perfect-scrollbar'
@@ -25,7 +23,7 @@ export class AdminLayoutComponent implements OnInit {
   constructor(public location: Location, private router: Router) {}
 
   ngOnInit() {
-    const isWindows = navigator.platform.indexOf('Win') > -1 ? true : false
+    const isWindows = navigator.platform.includes('Win') ? true : false
 
     if (
       isWindows &&
@@ -79,10 +77,8 @@ export class AdminLayoutComponent implements OnInit {
     const $sidebar_responsive = $('body > .navbar-collapse')
     const $sidebar_img_container = $sidebar.find('.sidebar-background')
 
-    if (window_width > 767) {
-      if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
-        $('.fixed-plugin .dropdown').addClass('open')
-      }
+    if (window_width > 767 && $('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+      $('.fixed-plugin .dropdown').addClass('open')
     }
 
     $('.fixed-plugin a').click(function(event) {
@@ -131,27 +127,27 @@ export class AdminLayoutComponent implements OnInit {
         .attr('src')
 
       if ($sidebar_img_container.length != 0) {
-        $sidebar_img_container.fadeOut('fast', function() {
+        $sidebar_img_container.fadeOut('fast', () => {
           $sidebar_img_container.css(
             'background-image',
-            'url("' + new_image + '")'
+            `url("${new_image}")`
           )
           $sidebar_img_container.fadeIn('fast')
         })
       }
 
       if ($full_page_background.length != 0) {
-        $full_page_background.fadeOut('fast', function() {
+        $full_page_background.fadeOut('fast', () => {
           $full_page_background.css(
             'background-image',
-            'url("' + new_image + '")'
+            `url("${new_image}")`
           )
           $full_page_background.fadeIn('fast')
         })
       }
 
       if ($sidebar_responsive.length != 0) {
-        $sidebar_responsive.css('background-image', 'url("' + new_image + '")')
+        $sidebar_responsive.css('background-image', `url("${new_image}")`)
       }
     })
   }
@@ -175,13 +171,12 @@ export class AdminLayoutComponent implements OnInit {
     }
   }
   isMac(): boolean {
-    let bool = false
     if (
-      navigator.platform.toUpperCase().indexOf('MAC') >= 0 ||
-      navigator.platform.toUpperCase().indexOf('IPAD') >= 0
+      navigator.platform.toUpperCase().includes('MAC') ||
+      navigator.platform.toUpperCase().includes('IPAD')
     ) {
-      bool = true
+      return true;
     }
-    return bool
+    return false
   }
 }

@@ -24,7 +24,7 @@ export class MapsComponent implements OnInit, OnDestroy {
     this.sub = this.route.paramMap.subscribe(params => {
       if (params === undefined) { return; }
       console.log(this.map);
-      if (this.map === undefined || this.map === null) {
+      if (this.map == null) {
         this.initMap();
       }
 

@@ -1,0 +1,34 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-lg-6 col-xl-6 ">
+                <div class="card">
+                    <div class="card-header">
+                    <h4>Ventas Por Vendedor</h4>
+                    </div>
+                    <div class="card-body">
+                    <apx-chart [series]="barChartOptionsVendedor.series" [chart]="barChartOptionsVendedor.chart"
+                        [dataLabels]="barChartOptionsVendedor.dataLabels" [stroke]="barChartOptionsVendedor.stroke"
+                        [colors]="barChartOptionsVendedor.colors" [title]="barChartOptionsVendedor.title" [grid]="barChartOptionsVendedor.grid"
+                        [tooltip]="barChartOptionsVendedor.tooltip" [plotOptions]="barChartOptionsVendedor.plotOptions"
+                        [yaxis]="barChartOptionsVendedor.yaxis" [xaxis]="barChartOptionsVendedor.xaxis"></apx-chart>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-6 col-xl-6 ">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Ventas Por Ruta</h4>
+                </div>
+                <div class="card-body">
+                  <apx-chart [series]="barChartOptionsRuta.series" [chart]="barChartOptionsRuta.chart"
+                    [dataLabels]="barChartOptionsRuta.dataLabels" [stroke]="barChartOptionsRuta.stroke"
+                    [colors]="barChartOptionsRuta.colors" [title]="barChartOptionsRuta.title" [grid]="barChartOptionsRuta.grid"
+                    [tooltip]="barChartOptionsRuta.tooltip" [plotOptions]="barChartOptionsRuta.plotOptions"
+                    [yaxis]="barChartOptionsRuta.yaxis" [xaxis]="barChartOptionsRuta.xaxis"></apx-chart>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>

@@ -82,7 +82,20 @@
     background: black;
   }
 
+  .card-title-procesar-ventas {
 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+  }
+
+  .card-title-procesar-ventas-botones{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
 
   #mapping_table tbody {
     display:block;

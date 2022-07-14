@@ -12,6 +12,7 @@ import { VentasListComponent } from 'app/ventas-list/ventas-list.component';
 import { VentasSummaryComponent } from 'app/ventas-summary/ventas-summary.component';
 import { VentasResultComponent } from 'app/ventas-result/ventas-result.component';
 import { ReportesComponent } from 'app/reportes/reportes.component';
+import { GraficoVentasComponent } from 'app/grafico-ventas/grafico-ventas.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -26,5 +27,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'ventas-list', component: VentasListComponent },
     { path: 'ventas-summary', component: VentasSummaryComponent},
     { path: 'ventas-result', component: VentasResultComponent},
-    { path: 'reportes', component: ReportesComponent}
+    { path: 'reportes', component: ReportesComponent},
+    { path: 'ventas-pendientes', component: GraficoVentasComponent}
+
 ];

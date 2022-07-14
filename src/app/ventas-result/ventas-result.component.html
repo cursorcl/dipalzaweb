@@ -3,15 +3,13 @@
       <div class="row">
           <div class="col-md-12">
               <div class="card">
-                  <div class="card-header card-header-danger row">
-                    <div class="col-6">
+                  <div class="card-header card-header-danger row card-title-resultados-ventas">
+                    <div >
                       <h4 class="card-title">Resultados</h4>
                       <p class="card-category">Ventas Procesadas</p>
                     </div>
-                    
-                    <div class="col-4">
-
-                    
+                    <div class="card-title-resultados-ventas-botones">
+                    <div>
                         <mat-form-field appearance="fill">
                             <mat-label>Escoger Fecha</mat-label>
                             <input matInput [matDatepicker]="picker"  [(ngModel)]="today">
@@ -21,8 +19,9 @@
                         </mat-form-field>
                     </div>
 
-                    <div class="col-2 align-self-end">
+                    <div >
                         <button type="button" class="btn confirm-button" (click)="onProcess()" >Buscar</button>
+                    </div>
                     </div>
                   </div>
 

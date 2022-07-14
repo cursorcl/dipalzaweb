@@ -18,6 +18,8 @@ import { DatePipe } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ConfigService } from './services/app_config.service';
+import { GraficoVentasComponent } from './grafico-ventas/grafico-ventas.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 
@@ -37,12 +39,15 @@ export const configFactory = (configService: ConfigService) => {
     AppRoutingModule,
     FontAwesomeModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    NgApexchartsModule
     
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    GraficoVentasComponent,
+   
     
 
   ],
